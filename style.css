@@ -1,0 +1,203 @@
+/* Google font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    --main-color: #fff;
+    --medium-color: #f8f8f9;
+    --accent-color: #201f3b;
+    background-color: var(--medium-color);
+    color: var(--accent-color);
+    transition: 0.3s ease;
+}
+
+.body-dark {
+    --main-color: #161532;
+    --medium-color: #0a091b;
+    --accent-color: #fff;
+}
+
+.head {
+    margin: 50px auto 40px auto;
+    padding: 0 40px;
+    max-width: 1100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.head .title {
+    column-gap: 15px;
+}
+
+.head .title .title-text {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.head .btn-theme {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    padding:  0 20px;
+    column-gap: 15px;
+    margin: 20px auto 40px auto;
+    justify-content: space-around;
+    max-width: 1100px;
+}
+
+.container .color {
+    padding: 7px;
+    background: var(--main-color);
+    border-radius: 7px;
+    text-align: center;
+    list-style-type: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0  0px 5px #eee5e5;
+}
+
+.container .color-dark {
+    box-shadow: none;
+}
+
+.container .color:active {
+    transform: scale(0.95);
+}
+
+.container .color .rect-box {
+    width: 185px;
+    height: 185px;
+    border-radius: 6px;
+}
+
+.container .color .rect-box:hover {
+    filter: brightness(110%);
+}
+
+.container .color .hex-value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+    font-size: 17px;
+    font-weight: 500;
+    margin: 10px 0 6px 0;
+    color: var(--accent-color);
+}
+
+.btn-wrapper {
+    position: relative;
+}
+
+.btn-refresh {
+    outline: none;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    top: 10px;
+
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    padding: 10px 25px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+
+    color: var(--main-color);
+    background: var(--accent-color);
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+    transform: translateX(-50%);
+}
+
+.btn-refresh::before,
+.btn-refresh::after {
+    left: 50%;
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 150%;
+    transform: translateX(-50%);
+    background-repeat: no-repeat;
+    z-index: -1000;
+}
+
+.btn-refresh.animate::before {
+    top: -70%;
+    background-image: radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+        radial-gradient(circle, transparent 10%, var(--accent-color) 10%, transparent 15%),
+        radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+        radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+        radial-gradient(circle, transparent 10%, var(--accent-color) 15%, transparent 20%),
+        radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+        radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+        radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+        radial-gradient(circle, var(--accent-color) 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+    
+    animation: topBubbles 0.7s ease-in-out infinite;
+}
+
+@keyframes topBubbles {
+    50% {
+        background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+    }
+    100% {
+        background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+}
+
+.btn-refresh.animate::after {
+    bottom: -70%;
+    background-image: radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+        radial-gradient(circle, transparent 10%, var(--accent-color) 15%, transparent 20%),
+        radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+        radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+        radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+        radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+        radial-gradient(circle, var(--accent-color) 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+    background-position: 10% 0%, 30% 10%, 55% 0%, 70% 0%, 85% 0%, 70% 0%, 70% 0%;
+    animation: bottomBubbles 0.7s ease-in-out infinite;
+}
+
+@keyframes bottomBubbles {
+    50% {
+        background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+    }
+    100% {
+        background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 100% 10%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+}
+
+.btn-refresh:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+.btn-refresh:hover {
+    background-color: var(--accent-color);
+}
