@@ -13,7 +13,7 @@ body {
     --accent-color: #201f3b;
     background-color: var(--medium-color);
     color: var(--accent-color);
-    transition: 0.3s ease;
+    transition: 0.5s ease-in-out;
 }
 
 .body-dark {
@@ -50,6 +50,40 @@ body {
     cursor: pointer;
 }
 
+.head .toggle {
+    position: relative;
+    height: 28px;
+    width: 55px;
+    background-color: #eeebeb;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0  0px 5px #b4b0b0 inset;
+}
+
+.head .toggle::before {
+    content: '';
+    background: var(--main-color);
+    background-image: url("https://cdn-icons-png.flaticon.com/128/3917/3917817.png");
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+.head .toggle.active::before {
+    background-image: url("https://cdn-icons-png.flaticon.com/128/667/667421.png");
+    background-size: 70%;
+    left: calc(100% - 20px - 3px) ;
+    transition: all 0.3s ease-in-out;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -72,6 +106,7 @@ body {
     text-transform: uppercase;
     box-shadow: 0  0px 5px #eee5e5;
 }
+
 
 .container .color-dark {
     box-shadow: none;

@@ -1,18 +1,28 @@
 const container = document.querySelector(".container");
 const btnRefresh = document.querySelector(".btn-refresh");
-const btnTheme = document.querySelector(".btn-theme");
 const body = document.querySelector('body');
-
 const paletteBoxes = 10;
-let darkTheme = false;
+toggle = document.querySelector(".toggle");
 
+setMode();
 refreshPalette();
 
 btnRefresh.addEventListener("click", () => {
     refreshPalette();
     animateBtn();
 });
-btnTheme.addEventListener("click", changeTheme);
+
+toggle.addEventListener("click", changeMode);
+
+function setMode() {
+    if (localStorage.getItem("mode") == "dark") {
+        body.classList.toggle("body-dark");
+
+        colors = document.getElementsByClassName("color")
+        for (var i = 0; i < colors.length; i++)
+            colors[i].classList.toggle("color-dark");
+    }
+}
 
 function refreshPalette() {
     // clear container
@@ -27,8 +37,8 @@ function refreshPalette() {
 
         const color = document.createElement("li");
         color.classList.add("color");
-        
-        if (darkTheme == true) {
+
+        if (localStorage.getItem("mode") == "dark") {
             color.classList.add("color-dark");
         }
 
@@ -49,20 +59,19 @@ function copyColor(element, randomHex) {
     }).catch(() => alert("Failed to copy the color code :("))
 }
 
-function changeTheme() {
- 
-    if (darkTheme == false) {
-        body.classList.add("body-dark");
-        darkTheme = true;
+function changeMode() {
+    toggle.classList.toggle("active");
+    body.classList.toggle("body-dark");
 
-        colors = document.getElementsByClassName("color")
+    colors = document.getElementsByClassName("color")
         for (var i = 0; i < colors.length; i++)
-            colors[i].classList.add("color-dark");
+            colors[i].classList.toggle("color-dark");
+
+    if (!body.classList.contains("body-dark")) {
+        return localStorage.setItem("mode", "light");
     }
-    else {
-        body.classList.remove('body-dark');
-        darkTheme = false;
-    }
+    localStorage.setItem("mode", "dark");
+
 }
 
 function animateBtn() {
